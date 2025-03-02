@@ -1,0 +1,33 @@
+﻿{
+  "author": "Rickie26k",
+  "classifications": [
+    "Locations"
+  ],
+  "name": "RaikoneerLocations",
+  "identity": "rickie26k.valheim.raikoneerlocations",
+  "shortName": "reel",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "RaikoneerLocations",
+  "preferNameDirectory": "true",
+  "symbols": {
+    "AuthorName": {
+      "type": "parameter",
+      "description": "Is a Raikon",
+      "datatype": "string",
+      "defaultValue": "rickie26k",
+      "replaces": "{rickie26k}"
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [ ".git/**", ".idea/**", ".vs/**", "obj/**", "bin/**", "RaikoneerLocations.sln", "RaikoneerLocations.sln.DotSettings.user" ]
+        }
+      ]
+    }
+  ]
+}
