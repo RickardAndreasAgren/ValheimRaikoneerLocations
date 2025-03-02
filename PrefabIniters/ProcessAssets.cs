@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using RaikoneerLocations.Spawners;
+using PieceManager;
 
 namespace RaikoneerLocations.PrefabIniters
 {
@@ -15,6 +16,7 @@ namespace RaikoneerLocations.PrefabIniters
         private static bool donePrefabs = false;
         private static bool donePieces = false;
         private static bool doneLocations = false;
+        private static ZNetScene? zNet { get; set; } = null;
         public static void RunPrefabs()
         {
             if (donePrefabs) return;
@@ -52,6 +54,12 @@ namespace RaikoneerLocations.PrefabIniters
             }
         }
 
+        public static void UpdateLocationSpawners(ZNetScene instance)
+        {
+            zNet = instance;
+            FixSpawners();
+        }
+
         private static void LoadPrefabs()
         {
             /*
@@ -63,10 +71,14 @@ namespace RaikoneerLocations.PrefabIniters
 
         private static void LoadPieces()
         {
-            PieceManager.PiecePrefabManager.RegisterPrefab(RaikoneerLocations.EmbeddedResourceBundle, "arl_01MeadowsAdv.prefab");
-            PieceManager.PiecePrefabManager.RegisterPrefab(RaikoneerLocations.EmbeddedResourceBundle, "arl_02MeadowsTreasure.prefab");
-            PieceManager.PiecePrefabManager.RegisterPrefab(RaikoneerLocations.EmbeddedResourceBundle, "arl_03MeadowsArmory.prefab");
-            PieceManager.PiecePrefabManager.RegisterPrefab(RaikoneerLocations.EmbeddedResourceBundle, "arl_11BlackForestBasic.prefab");
+            var arl_01 = new PieceManager.BuildPiece(RaikoneerLocations.EmbeddedResourceBundle, "arl_01MeadowsAdv.prefab");
+            SetLootChestPiece(arl_01);
+            var arl_02 = new PieceManager.BuildPiece(RaikoneerLocations.EmbeddedResourceBundle, "arl_02MeadowsTreasure.prefab");
+            SetLootChestPiece(arl_02);
+            var arl_03 = new PieceManager.BuildPiece(RaikoneerLocations.EmbeddedResourceBundle, "arl_03MeadowsArmory.prefab");
+            SetLootChestPiece(arl_03);
+            var arl_11 = new PieceManager.BuildPiece(RaikoneerLocations.EmbeddedResourceBundle, "arl_11BlackForestBasic.prefab");
+            SetLootChestPiece(arl_11);
 
             /*
             var c01MeadowsAdv = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_01MeadowsAdv.prefab");
@@ -86,12 +98,18 @@ namespace RaikoneerLocations.PrefabIniters
             PrefabManager.RegisterPrefab(c11BlackForestBasic);
             */
 
-            PieceManager.PiecePrefabManager.RegisterPrefab(RaikoneerLocations.EmbeddedResourceBundle, "arl_12BlackForestAdv.prefab");
-            PieceManager.PiecePrefabManager.RegisterPrefab(RaikoneerLocations.EmbeddedResourceBundle, "arl_13BlackForestTreasure.prefab");
-            PieceManager.PiecePrefabManager.RegisterPrefab(RaikoneerLocations.EmbeddedResourceBundle, "arl_14BlackForestArmory.prefab");
-            PieceManager.PiecePrefabManager.RegisterPrefab(RaikoneerLocations.EmbeddedResourceBundle, "arl_21SwampBasic.prefab");
-            PieceManager.PiecePrefabManager.RegisterPrefab(RaikoneerLocations.EmbeddedResourceBundle, "arl_22SwampAdv.prefab");
-            PieceManager.PiecePrefabManager.RegisterPrefab(RaikoneerLocations.EmbeddedResourceBundle, "arl_23SwampArmory.prefab");
+            var arl_12 = new PieceManager.BuildPiece(RaikoneerLocations.EmbeddedResourceBundle, "arl_12BlackForestAdv.prefab");
+            SetLootChestPiece(arl_12);
+            var arl_13 = new PieceManager.BuildPiece(RaikoneerLocations.EmbeddedResourceBundle, "arl_13BlackForestTreasure.prefab");
+            SetLootChestPiece(arl_13);
+            var arl_14 = new PieceManager.BuildPiece(RaikoneerLocations.EmbeddedResourceBundle, "arl_14BlackForestArmory.prefab");
+            SetLootChestPiece(arl_14);
+            var arl_21 = new PieceManager.BuildPiece(RaikoneerLocations.EmbeddedResourceBundle, "arl_21SwampBasic.prefab");
+            SetLootChestPiece(arl_21);
+            var arl_22 = new PieceManager.BuildPiece(RaikoneerLocations.EmbeddedResourceBundle, "arl_22SwampAdv.prefab");
+            SetLootChestPiece(arl_22);
+            var arl_23 = new PieceManager.BuildPiece(RaikoneerLocations.EmbeddedResourceBundle, "arl_23SwampArmory.prefab");
+            SetLootChestPiece(arl_23);
 
             /*
             var c12BlackForestAdv = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_12BlackForestAdv.prefab");
@@ -119,12 +137,18 @@ namespace RaikoneerLocations.PrefabIniters
             PrefabManager.RegisterPrefab(c23SwampArmory);
             */
 
-            PieceManager.PiecePrefabManager.RegisterPrefab(RaikoneerLocations.EmbeddedResourceBundle, "arl_31MountainsBasic.prefab");
-            PieceManager.PiecePrefabManager.RegisterPrefab(RaikoneerLocations.EmbeddedResourceBundle, "arl_32MountainsArmory.prefab");
-            PieceManager.PiecePrefabManager.RegisterPrefab(RaikoneerLocations.EmbeddedResourceBundle, "arl_41PlainsBasic.prefab");
-            PieceManager.PiecePrefabManager.RegisterPrefab(RaikoneerLocations.EmbeddedResourceBundle, "arl_42PlainsAdv.prefab");
-            PieceManager.PiecePrefabManager.RegisterPrefab(RaikoneerLocations.EmbeddedResourceBundle, "arl_43PlainsTreasure.prefab");
-            PieceManager.PiecePrefabManager.RegisterPrefab(RaikoneerLocations.EmbeddedResourceBundle, "arl_44PlainsArmory.prefab");
+            var arl_31 = new PieceManager.BuildPiece(RaikoneerLocations.EmbeddedResourceBundle, "arl_31MountainsBasic.prefab");
+            SetLootChestPiece(arl_31);
+            var arl_32 = new PieceManager.BuildPiece(RaikoneerLocations.EmbeddedResourceBundle, "arl_32MountainsArmory.prefab");
+            SetLootChestPiece(arl_32);
+            var arl_41 = new PieceManager.BuildPiece(RaikoneerLocations.EmbeddedResourceBundle, "arl_41PlainsBasic.prefab");
+            SetLootChestPiece(arl_41);
+            var arl_42 = new PieceManager.BuildPiece(RaikoneerLocations.EmbeddedResourceBundle, "arl_42PlainsAdv.prefab");
+            SetLootChestPiece(arl_42);
+            var arl_43 = new PieceManager.BuildPiece(RaikoneerLocations.EmbeddedResourceBundle, "arl_43PlainsTreasure.prefab");
+            SetLootChestPiece(arl_43);
+            var arl_44 = new PieceManager.BuildPiece(RaikoneerLocations.EmbeddedResourceBundle, "arl_44PlainsArmory.prefab");
+            SetLootChestPiece(arl_44);
 
             /*
             var c31MountainsBasic = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_31MountainsBasic.prefab");
@@ -154,10 +178,20 @@ namespace RaikoneerLocations.PrefabIniters
             donePieces = true;
         }
 
+        private static void SetLootChestPiece(BuildPiece piece)
+        {
+            piece.Name.English("Chest");
+            piece.RequiredItems.Add("wood", 10, false);
+
+            var config = piece.RecipeIsActive;
+            config.BoxedValue = false;
+            piece.RecipeIsActive = config;
+        }
+
         private static void LoadLocations()
         {
             var arl_foresthold = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_foresthold.prefab");
-            UpdateSpawnerRefs(ref arl_foresthold, "foresthold", SpawnDefinitions.SpawnerMap["arl_foresthold"]);
+            PrefabManager.RegisterPrefab(arl_foresthold);
             _ = new LocationManager.Location(arl_foresthold)
             {
                 Biome = Heightmap.Biome.BlackForest,
@@ -173,7 +207,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_foresthold_deserted = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_foresthold_deserted.prefab");
-            UpdateSpawnerRefs(ref arl_foresthold_deserted,"foresthold_deserted", SpawnDefinitions.SpawnerMap["arl_foresthold_deserted"]);
+            PrefabManager.RegisterPrefab(arl_foresthold_deserted);
             _ = new LocationManager.Location(arl_foresthold_deserted)
             {
                 Biome = Heightmap.Biome.BlackForest,
@@ -189,7 +223,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_foresthold_remnant = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_foresthold_remnant.prefab");
-            UpdateSpawnerRefs(ref arl_foresthold_remnant,"foresthold_remnant" , SpawnDefinitions.SpawnerMap["arl_foresthold_remnant"]);
+            PrefabManager.RegisterPrefab(arl_foresthold_remnant);
             _ = new LocationManager.Location(arl_foresthold_remnant)
             {
                 Biome = Heightmap.Biome.Meadows,
@@ -205,7 +239,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_foresthold_ruins = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_foresthold_ruins.prefab");
-            UpdateSpawnerRefs(ref arl_foresthold_ruins,"foresthold_ruins" , SpawnDefinitions.SpawnerMap["arl_foresthold_ruins"]);
+            PrefabManager.RegisterPrefab(arl_foresthold_ruins);
             _ = new LocationManager.Location(arl_foresthold_ruins)
             {
                 Biome = Heightmap.Biome.Mountain,
@@ -221,7 +255,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_instairtower = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_instairtower.prefab");
-            UpdateSpawnerRefs(ref arl_instairtower,"instairtower" , SpawnDefinitions.SpawnerMap["arl_instairtower"]);
+            PrefabManager.RegisterPrefab(arl_instairtower);
             _ = new LocationManager.Location(arl_instairtower)
             {
                 Biome = Heightmap.Biome.Plains,
@@ -237,7 +271,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_instairtower_damaged = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_instairtower_damaged.prefab");
-            UpdateSpawnerRefs(ref arl_instairtower_damaged,"instairtower_damaged" , SpawnDefinitions.SpawnerMap["arl_instairtower_damaged"]);
+            PrefabManager.RegisterPrefab(arl_instairtower_damaged);
             _ = new LocationManager.Location(arl_instairtower_damaged)
             {
                 Biome = Heightmap.Biome.Plains,
@@ -253,7 +287,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_instairtower_rebuilt = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_instairtower_rebuilt.prefab");
-            UpdateSpawnerRefs(ref arl_instairtower_rebuilt,"instairtower_rebuilt" , SpawnDefinitions.SpawnerMap["arl_instairtower_rebuilt"]);
+            PrefabManager.RegisterPrefab(arl_instairtower_rebuilt);
             _ = new LocationManager.Location(arl_instairtower_rebuilt)
             {
                 Biome = Heightmap.Biome.Plains,
@@ -269,7 +303,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_instairtower_remnant = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_instairtower_remnant.prefab");
-            UpdateSpawnerRefs(ref arl_instairtower_remnant,"instairtower_remnant" , SpawnDefinitions.SpawnerMap["arl_instairtower_remnant"]);
+            PrefabManager.RegisterPrefab(arl_instairtower_remnant);
             _ = new LocationManager.Location(arl_instairtower_remnant)
             {
                 Biome = Heightmap.Biome.Meadows,
@@ -285,7 +319,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_instairtower_reruin = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_instairtower_reruin.prefab");
-            UpdateSpawnerRefs(ref arl_instairtower_reruin,"instairtower_reruin" , SpawnDefinitions.SpawnerMap["arl_instairtower_reruin"]);
+            PrefabManager.RegisterPrefab(arl_instairtower_reruin);
             _ = new LocationManager.Location(arl_instairtower_reruin)
             {
                 Biome = Heightmap.Biome.Plains,
@@ -301,7 +335,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_instairtower_ruin = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_instairtower_ruin.prefab");
-            UpdateSpawnerRefs(ref arl_instairtower_ruin,"instairtower_ruin" , SpawnDefinitions.SpawnerMap["arl_instairtower_ruin"]);
+            PrefabManager.RegisterPrefab(arl_instairtower_ruin);
             _ = new LocationManager.Location(arl_instairtower_ruin)
             {
                 Biome = Heightmap.Biome.BlackForest,
@@ -318,7 +352,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_jarlsmanshouse = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_jarlsmanshouse.prefab");
-            UpdateSpawnerRefs(ref arl_jarlsmanshouse,"jarlsmanshouse" , SpawnDefinitions.SpawnerMap["arl_jarlsmanshouse"]);
+            PrefabManager.RegisterPrefab(arl_jarlsmanshouse);
             _ = new LocationManager.Location(arl_jarlsmanshouse)
             {
                 Biome = Heightmap.Biome.Meadows,
@@ -335,7 +369,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_jarlsmanshouse_remnant = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_jarlsmanshouse_remnant.prefab");
-            UpdateSpawnerRefs(ref arl_jarlsmanshouse_remnant,"jarlsmanshouse_remnant" , SpawnDefinitions.SpawnerMap["arl_jarlsmanshouse_remnant"]);
+            PrefabManager.RegisterPrefab(arl_jarlsmanshouse_remnant);
             _ = new LocationManager.Location(arl_jarlsmanshouse_remnant)
             {
                 Biome = Heightmap.Biome.Meadows,
@@ -352,6 +386,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_jarlsmanshouse_ruin = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_jarlsmanshouse_ruin.prefab");
+            PrefabManager.RegisterPrefab(arl_jarlsmanshouse_ruin);
             // UpdateSpawnerRefs(ref arl_jarlsmanshouse_ruin,"jarlsmanshouse_ruin" , SpawnDefinitions.SpawnerMap["arl_jarlsmanshouse_ruin"]);
             _ = new LocationManager.Location(arl_jarlsmanshouse_ruin)
             {
@@ -369,7 +404,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_outpostcabin = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_outpostcabin.prefab");
-            UpdateSpawnerRefs(ref arl_outpostcabin,"outpostcabin" , SpawnDefinitions.SpawnerMap["arl_outpostcabin"]);
+            PrefabManager.RegisterPrefab(arl_outpostcabin);
             _ = new LocationManager.Location(arl_outpostcabin)
             {
                 Biome = Heightmap.Biome.Mountain,
@@ -386,7 +421,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_outpostcabin_ruin = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_outpostcabin_ruin.prefab");
-            UpdateSpawnerRefs(ref arl_outpostcabin_ruin,"outpostcabin_ruin" , SpawnDefinitions.SpawnerMap["arl_outpostcabin_ruin"]);
+            PrefabManager.RegisterPrefab(arl_outpostcabin_ruin);
             _ = new LocationManager.Location(arl_outpostcabin_ruin)
             {
                 Biome = Heightmap.Biome.Mountain,
@@ -403,7 +438,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_outposttower = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_outposttower.prefab");
-            UpdateSpawnerRefs(ref arl_outposttower,"outposttower" , SpawnDefinitions.SpawnerMap["arl_outposttower"]);
+            PrefabManager.RegisterPrefab(arl_outposttower);
             _ = new LocationManager.Location(arl_outposttower)
             {
                 Biome = Heightmap.Biome.BlackForest,
@@ -420,7 +455,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_outposttower_burnt = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_outposttower_burnt.prefab");
-            UpdateSpawnerRefs(ref arl_outposttower_burnt,"outposttower_burnt" , SpawnDefinitions.SpawnerMap["arl_outposttower_burnt"]);
+            PrefabManager.RegisterPrefab(arl_outposttower_burnt);
             _ = new LocationManager.Location(arl_outposttower_burnt)
             {
                 Biome = Heightmap.Biome.Plains,
@@ -437,7 +472,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_outposttower_ruin = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_outposttower_ruin.prefab");
-            UpdateSpawnerRefs(ref arl_outposttower_ruin,"outposttower_ruin" , SpawnDefinitions.SpawnerMap["arl_outposttower_ruin"]);
+            PrefabManager.RegisterPrefab(arl_outposttower_ruin);
             _ = new LocationManager.Location(arl_outposttower_ruin)
             {
                 Biome = Heightmap.Biome.Plains,
@@ -454,7 +489,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_outposttower_remnant = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_outposttower_remnant.prefab");
-            UpdateSpawnerRefs(ref arl_outposttower_remnant,"outposttower_remnant" , SpawnDefinitions.SpawnerMap["arl_outposttower_remnant"]);
+            PrefabManager.RegisterPrefab(arl_outposttower_remnant);
             _ = new LocationManager.Location(arl_outposttower_remnant)
             {
                 Biome = Heightmap.Biome.Plains,
@@ -471,7 +506,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_pillartower = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_pillartower.prefab");
-            UpdateSpawnerRefs(ref arl_pillartower,"pillartower" , SpawnDefinitions.SpawnerMap["arl_pillartower"]);
+            PrefabManager.RegisterPrefab(arl_pillartower);
             _ = new LocationManager.Location(arl_pillartower)
             {
                 Biome = Heightmap.Biome.Plains,
@@ -488,7 +523,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_pillartower_remnant = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_pillartower_remnant.prefab");
-            UpdateSpawnerRefs(ref arl_pillartower_remnant,"pillartower_remnant" , SpawnDefinitions.SpawnerMap["arl_pillartower_remnant"]);
+            PrefabManager.RegisterPrefab(arl_pillartower_remnant);
             _ = new LocationManager.Location(arl_pillartower_remnant)
             {
                 Biome = Heightmap.Biome.Plains,
@@ -505,7 +540,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_pillartower_ruin = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_pillartower_ruin.prefab");
-            UpdateSpawnerRefs(ref arl_pillartower_ruin,"pillartower_ruin" , SpawnDefinitions.SpawnerMap["arl_pillartower_ruin"]);
+            PrefabManager.RegisterPrefab(arl_pillartower_ruin);
             _ = new LocationManager.Location(arl_pillartower_ruin)
             {
                 Biome = Heightmap.Biome.Swamp,
@@ -522,7 +557,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_smallonghouse = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_smallonghouse.prefab");
-            UpdateSpawnerRefs(ref arl_smallonghouse,"smallonghouse" , SpawnDefinitions.SpawnerMap["arl_smallonghouse"]);
+            PrefabManager.RegisterPrefab(arl_smallonghouse);
             _ = new LocationManager.Location(arl_smallonghouse)
             {
                 Biome = Heightmap.Biome.Meadows,
@@ -539,7 +574,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_swamptower = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_swamptower.prefab");
-            UpdateSpawnerRefs(ref arl_swamptower,"swamptower" , SpawnDefinitions.SpawnerMap["arl_swamptower"]);
+            PrefabManager.RegisterPrefab(arl_swamptower);
             _ = new LocationManager.Location(arl_swamptower)
             {
                 Biome = Heightmap.Biome.Swamp,
@@ -556,7 +591,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_swamptower_remnant = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_swamptower_remnant.prefab");
-            UpdateSpawnerRefs(ref arl_swamptower_remnant,"swamptower_remnant" , SpawnDefinitions.SpawnerMap["arl_swamptower_remnant"]);
+            PrefabManager.RegisterPrefab(arl_swamptower_remnant);
             _ = new LocationManager.Location(arl_swamptower_remnant)
             {
                 Biome = Heightmap.Biome.Swamp,
@@ -573,7 +608,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_swamptower_ruin = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_swamptower_ruin.prefab");
-            UpdateSpawnerRefs(ref arl_swamptower_ruin,"swamptower_ruin" , SpawnDefinitions.SpawnerMap["arl_swamptower_ruin"]);
+            PrefabManager.RegisterPrefab(arl_swamptower_ruin);
             _ = new LocationManager.Location(arl_swamptower_ruin)
             {
                 Biome = Heightmap.Biome.Swamp,
@@ -590,7 +625,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_traphouseplain = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_traphouseplain.prefab");
-            UpdateSpawnerRefs(ref arl_traphouseplain,"traphouseplain" , SpawnDefinitions.SpawnerMap["arl_traphouseplain"]);
+            PrefabManager.RegisterPrefab(arl_traphouseplain);
             _ = new LocationManager.Location(arl_traphouseplain)
             {
                 Biome = Heightmap.Biome.Plains,
@@ -607,7 +642,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_traphouseplain_remnant = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_traphouseplain_remnant.prefab");
-            UpdateSpawnerRefs(ref arl_traphouseplain_remnant,"traphouseplain_remnant" , SpawnDefinitions.SpawnerMap["arl_traphouseplain_remnant"]);
+            PrefabManager.RegisterPrefab(arl_traphouseplain_remnant);
             _ = new LocationManager.Location(arl_traphouseplain_remnant)
             {
                 Biome = Heightmap.Biome.Meadows,
@@ -624,7 +659,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_traphouseplain_ruin = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_traphouseplain_ruin.prefab");
-            UpdateSpawnerRefs(ref arl_traphouseplain_ruin,"traphouseplain_ruin" , SpawnDefinitions.SpawnerMap["arl_traphouseplain_ruin"]);
+            PrefabManager.RegisterPrefab(arl_traphouseplain_ruin);
             _ = new LocationManager.Location(arl_traphouseplain_ruin)
             {
                 Biome = Heightmap.Biome.Plains,
@@ -641,7 +676,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_twotwohouse = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_twotwohouse.prefab");
-            UpdateSpawnerRefs(ref arl_twotwohouse,"twotwohouse" , SpawnDefinitions.SpawnerMap["arl_twotwohouse"]);
+            PrefabManager.RegisterPrefab(arl_twotwohouse);
             _ = new LocationManager.Location(arl_twotwohouse)
             {
                 Biome = Heightmap.Biome.Mountain,
@@ -658,7 +693,7 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_twotwohouse_remnant = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_twotwohouse_remnant.prefab");
-            UpdateSpawnerRefs(ref arl_twotwohouse_remnant,"twotwohouse_remnant" , SpawnDefinitions.SpawnerMap["arl_twotwohouse_remnant"]);
+            PrefabManager.RegisterPrefab(arl_twotwohouse_remnant);
             _ = new LocationManager.Location(arl_twotwohouse_remnant)
             {
                 Biome = Heightmap.Biome.Meadows,
@@ -675,24 +710,24 @@ namespace RaikoneerLocations.PrefabIniters
             };
 
             var arl_twotwohouse_ruin = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_twotwohouse_ruin.prefab");
-            UpdateSpawnerRefs(ref arl_twotwohouse_ruin,"twotwohouse_ruin" , SpawnDefinitions.SpawnerMap["arl_twotwohouse_ruin"]);
+            PrefabManager.RegisterPrefab(arl_twotwohouse_ruin);
             _ = new LocationManager.Location(arl_twotwohouse_ruin)
             {
                 Biome = Heightmap.Biome.Meadows,
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 8,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)15, (float)100),
+                SpawnAltitude = new Range((float)25, (float)100),
                 SpawnDistance = new Range(1000, 3500),
                 MinimumDistanceFromGroup = 300,
                 GroupName = "arl_twotwohouse",
-                HeightDelta = new Range(0, 4),
+                HeightDelta = new Range(0, 5),
                 Rotation = Rotation.Random,
-                ForestThreshold = new Range(1, 0)
+                //ForestThreshold = new Range(1, 1)
             };
 
             var arl_twotwohouse_stormed = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_twotwohouse_stormed.prefab");
-            UpdateSpawnerRefs(ref arl_twotwohouse_stormed,"twotwohouse_stormed" , SpawnDefinitions.SpawnerMap["arl_twotwohouse_stormed"]);
+            PrefabManager.RegisterPrefab(arl_twotwohouse_stormed);
             _ = new LocationManager.Location(arl_twotwohouse_stormed)
             {
                 Biome = Heightmap.Biome.Mountain,
@@ -712,49 +747,67 @@ namespace RaikoneerLocations.PrefabIniters
             donePieces = true;
         }
 
-        public static void A()
+        public static void FixSpawners()
         {
-            ZoneSystem.instance.GetLocation("Aha");
+            UpdateSpawnerRefs("foresthold", SpawnDefinitions.SpawnerMap["arl_foresthold"]);
+            UpdateSpawnerRefs("foresthold_deserted", SpawnDefinitions.SpawnerMap["arl_foresthold_deserted"]);
+            UpdateSpawnerRefs("foresthold_remnant", SpawnDefinitions.SpawnerMap["arl_foresthold_remnant"]);
+            UpdateSpawnerRefs("foresthold_ruins", SpawnDefinitions.SpawnerMap["arl_foresthold_ruins"]);
+            UpdateSpawnerRefs("instairtower", SpawnDefinitions.SpawnerMap["arl_instairtower"]);
+            UpdateSpawnerRefs("instairtower_damaged", SpawnDefinitions.SpawnerMap["arl_instairtower_damaged"]);
+            UpdateSpawnerRefs("instairtower_rebuilt", SpawnDefinitions.SpawnerMap["arl_instairtower_rebuilt"]);
+            UpdateSpawnerRefs("instairtower_remnant", SpawnDefinitions.SpawnerMap["arl_instairtower_remnant"]);
+            UpdateSpawnerRefs("instairtower_reruin", SpawnDefinitions.SpawnerMap["arl_instairtower_reruin"]);
+            UpdateSpawnerRefs("instairtower_ruin", SpawnDefinitions.SpawnerMap["arl_instairtower_ruin"]);
+            UpdateSpawnerRefs("jarlsmanshouse", SpawnDefinitions.SpawnerMap["arl_jarlsmanshouse"]);
+            UpdateSpawnerRefs("jarlsmanshouse_remnant", SpawnDefinitions.SpawnerMap["arl_jarlsmanshouse_remnant"]);
+            UpdateSpawnerRefs("outpostcabin", SpawnDefinitions.SpawnerMap["arl_outpostcabin"]);
+            UpdateSpawnerRefs("outpostcabin_ruin", SpawnDefinitions.SpawnerMap["arl_outpostcabin_ruin"]);
+            UpdateSpawnerRefs("outposttower", SpawnDefinitions.SpawnerMap["arl_outposttower"]);
+            UpdateSpawnerRefs("outposttower_burnt", SpawnDefinitions.SpawnerMap["arl_outposttower_burnt"]);
+            UpdateSpawnerRefs("outposttower_ruin", SpawnDefinitions.SpawnerMap["arl_outposttower_ruin"]);
+            UpdateSpawnerRefs("outposttower_remnant", SpawnDefinitions.SpawnerMap["arl_outposttower_remnant"]);
+            UpdateSpawnerRefs("pillartower", SpawnDefinitions.SpawnerMap["arl_pillartower"]);
+            UpdateSpawnerRefs("pillartower_remnant", SpawnDefinitions.SpawnerMap["arl_pillartower_remnant"]);
+            UpdateSpawnerRefs("pillartower_ruin", SpawnDefinitions.SpawnerMap["arl_pillartower_ruin"]);
+            UpdateSpawnerRefs("smallonghouse", SpawnDefinitions.SpawnerMap["arl_smallonghouse"]);
+            UpdateSpawnerRefs("swamptower", SpawnDefinitions.SpawnerMap["arl_swamptower"]);
+            UpdateSpawnerRefs("swamptower_remnant", SpawnDefinitions.SpawnerMap["arl_swamptower_remnant"]);
+            UpdateSpawnerRefs("swamptower_ruin", SpawnDefinitions.SpawnerMap["arl_swamptower_ruin"]);
+            UpdateSpawnerRefs("traphouseplain", SpawnDefinitions.SpawnerMap["arl_traphouseplain"]);
+            UpdateSpawnerRefs("traphouseplain_remnant", SpawnDefinitions.SpawnerMap["arl_traphouseplain_remnant"]);
+            UpdateSpawnerRefs("traphouseplain_ruin", SpawnDefinitions.SpawnerMap["arl_traphouseplain_ruin"]);
+            UpdateSpawnerRefs("twotwohouse", SpawnDefinitions.SpawnerMap["arl_twotwohouse"]);
+            UpdateSpawnerRefs("twotwohouse_remnant", SpawnDefinitions.SpawnerMap["arl_twotwohouse_remnant"]);
+            UpdateSpawnerRefs("twotwohouse_ruin", SpawnDefinitions.SpawnerMap["arl_twotwohouse_ruin"]);
+            UpdateSpawnerRefs("twotwohouse_stormed", SpawnDefinitions.SpawnerMap["arl_twotwohouse_stormed"]);
         }
 
-        private static void UpdateSpawnerRefs(ref GameObject prefabRoot, string name, Dictionary<string, string> spawnerDefinitions)
+        private static void UpdateSpawnerRefs(string name, Dictionary<string, string> spawnerDefinitions)
         {
+            string fullName = $"arl_{name}";
+            var prefabRoot = zNet.GetPrefab(fullName);
             // root => children.Tolower == Spawners => children.ToLower == spawnerObject => component spawner:target?
             var spawnersNode = prefabRoot.transform.Find("Spawners");
             string NullSpawners = "No spawnerParentNode";
             string NullTargetSpawner = "No target spawn with name: ";
             string NullCreatureSpawner = "No Creaturespawner";
             string NullLookup = "nothing from ZNetScene";
-            RaikoneerLocations.PluginLogger.LogWarning($"{(spawnersNode != null ? spawnersNode.childCount.ToString() : NullSpawners)}");
             foreach (var targetSpawner in spawnerDefinitions.Keys)
             {
-                RaikoneerLocations.PluginLogger.LogWarning("Target");
-                RaikoneerLocations.PluginLogger.LogWarning(targetSpawner);
-                RaikoneerLocations.PluginLogger.LogWarning($"Checking {name}_{targetSpawner}");
-
                 var targetSpawnerT = spawnersNode.Find($"{name}_{targetSpawner}");
-                RaikoneerLocations.PluginLogger.LogWarning($"{(targetSpawnerT != null ? targetSpawnerT.name : NullTargetSpawner)}");
+                //var inParent = targetSpawnerT.GetComponentInParent(typeof(CreatureSpawner));
+                
+                //if (inParent == null) RaikoneerLocations.PluginLogger.LogWarning($"no parent hits");
+                //else RaikoneerLocations.PluginLogger.LogWarning($"{inParent.name}");
 
-                RaikoneerLocations.PluginLogger.LogWarning($"{targetSpawnerT.gameObject.name} named Object");
-                RaikoneerLocations.PluginLogger.LogWarning($"{targetSpawnerT.gameObject.GetComponentCount()} component count on Object");
-                RaikoneerLocations.PluginLogger.LogWarning($"{targetSpawnerT.gameObject.GetComponentCount()} object children");
+                //var inChildren = targetSpawnerT.GetComponentInChildren(typeof(CreatureSpawner));
+                //if (inChildren == null) RaikoneerLocations.PluginLogger.LogWarning($"no children hits");
+                //else RaikoneerLocations.PluginLogger.LogWarning($"{inChildren} transform children");
 
-                RaikoneerLocations.PluginLogger.LogWarning($"{targetSpawnerT.childCount} transform childCount");
-
-                RaikoneerLocations.PluginLogger.LogWarning($"checking parent Components");
-                var inParent = targetSpawnerT.GetComponentInParent(typeof(CreatureSpawner));
-                if (inParent == null) RaikoneerLocations.PluginLogger.LogWarning($"no parent hits");
-                else RaikoneerLocations.PluginLogger.LogWarning($"{inParent.name}");
-
-                RaikoneerLocations.PluginLogger.LogWarning($"checking child Components");
-                var inChildren = targetSpawnerT.GetComponentInChildren(typeof(CreatureSpawner));
-                if (inChildren == null) RaikoneerLocations.PluginLogger.LogWarning($"no children hits");
-                else RaikoneerLocations.PluginLogger.LogWarning($"{inChildren} transform children");
-
-                RaikoneerLocations.PluginLogger.LogWarning($"checking current Components");
-                var inCurrent = targetSpawnerT.GetComponentInChildren(typeof(CreatureSpawner));
-                if (inCurrent == null) RaikoneerLocations.PluginLogger.LogWarning($"no current hits");
-                else RaikoneerLocations.PluginLogger.LogWarning($"{inCurrent} transform current");
+                //var inCurrent = targetSpawnerT.GetComponentInChildren(typeof(CreatureSpawner));
+                //if (inCurrent == null) RaikoneerLocations.PluginLogger.LogWarning($"no current hits");
+                //else RaikoneerLocations.PluginLogger.LogWarning($"{inCurrent} transform current");
 
                 CreatureSpawner creatureSpawner = targetSpawnerT.gameObject.GetComponent<CreatureSpawner>();
 
@@ -766,6 +819,7 @@ namespace RaikoneerLocations.PrefabIniters
                 RaikoneerLocations.PluginLogger.LogWarning($"Got ${(updatedCreatureRef != null ? updatedCreatureRef.name : NullLookup)}");
                 creatureSpawner.m_creaturePrefab = updatedCreatureRef;
             }
+            zNet.Update();
         }
     }
     

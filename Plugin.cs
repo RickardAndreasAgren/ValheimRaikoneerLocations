@@ -62,6 +62,7 @@ namespace RaikoneerLocations
             SpawnDefinitions.BuildMapDefault();
             ProcessAssets.RunPrefabs();
             ProcessAssets.RunPieces();
+            ProcessAssets.RunLocations();
 
             SetupWatcher();
         }
@@ -131,7 +132,7 @@ namespace RaikoneerLocations
         {
             public static void Postfix(ZNetScene __instance)
             {
-                ProcessAssets.RunLocations();
+                ProcessAssets.UpdateLocationSpawners(__instance);
             }
         }
     }
