@@ -44,11 +44,14 @@ namespace RaikoneerLocations
 
         private static ConfigEntry<Toggle> _serverConfigLocked = null!;
 
+        public static ConfigFile? PluginConfig;
+
         private static Assembly? _pluginAssembly { get; set; } = null;
         public static AssetBundle? EmbeddedResourceBundle { get; set; } = null;
         public void Awake()
         {
             Config.Reload();
+            PluginConfig = Config;
 
             (_, _serverConfigLocked) = new ConfigData<Toggle>("1 - General", "Lock Configuration", true)
                 .Describe("If on, the configuration is locked and can be changed by server admins only.")
@@ -133,6 +136,7 @@ namespace RaikoneerLocations
             public static void Postfix(ZNetScene __instance)
             {
                 ProcessAssets.UpdateLocationSpawners(__instance);
+                ProcessAssets.FixBoxWood();
             }
         }
     }

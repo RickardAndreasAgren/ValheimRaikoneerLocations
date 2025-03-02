@@ -8,6 +8,8 @@ using System;
 using System.Linq;
 using RaikoneerLocations.Spawners;
 using PieceManager;
+using System.ComponentModel;
+using BepInEx.Configuration;
 
 namespace RaikoneerLocations.PrefabIniters
 {
@@ -181,11 +183,16 @@ namespace RaikoneerLocations.PrefabIniters
         private static void SetLootChestPiece(BuildPiece piece)
         {
             piece.Name.English("Chest");
-            piece.RequiredItems.Add("wood", 10, false);
+            piece.RequiredItems.Add("Wood", 10, false);
 
+            /*
             var config = piece.RecipeIsActive;
-            config.BoxedValue = false;
-            piece.RecipeIsActive = config;
+            if (config != null) config.BoxedValue = false;
+            else
+            {
+                (_,config) = new ConfigData<bool>("Boxes",$"{piece.Name}", true).Describe("Its just lootboxes", new AcceptableValueList<bool>(true,false), "").Bind(RaikoneerLocations.PluginConfig, false);
+            }
+            piece.RecipeIsActive = config;*/
         }
 
         private static void LoadLocations()
@@ -700,7 +707,7 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 12,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)25, (float)100),
+                SpawnAltitude = new Range((float)20, (float)100),
                 SpawnDistance = new Range(1000, 3500),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_twotwohouse",
@@ -717,10 +724,10 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 8,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)25, (float)100),
+                SpawnAltitude = new Range((float)20, (float)100),
                 SpawnDistance = new Range(1000, 3500),
                 MinimumDistanceFromGroup = 300,
-                GroupName = "arl_twotwohouse",
+                GroupName = "arl_twotwohouse_ruins",
                 HeightDelta = new Range(0, 5),
                 Rotation = Rotation.Random,
                 //ForestThreshold = new Range(1, 1)
@@ -781,6 +788,7 @@ namespace RaikoneerLocations.PrefabIniters
             UpdateSpawnerRefs("twotwohouse_remnant", SpawnDefinitions.SpawnerMap["arl_twotwohouse_remnant"]);
             UpdateSpawnerRefs("twotwohouse_ruin", SpawnDefinitions.SpawnerMap["arl_twotwohouse_ruin"]);
             UpdateSpawnerRefs("twotwohouse_stormed", SpawnDefinitions.SpawnerMap["arl_twotwohouse_stormed"]);
+
         }
 
         private static void UpdateSpawnerRefs(string name, Dictionary<string, string> spawnerDefinitions)
@@ -820,6 +828,85 @@ namespace RaikoneerLocations.PrefabIniters
                 creatureSpawner.m_creaturePrefab = updatedCreatureRef;
             }
             zNet.Update();
+        }
+
+        public static void FixBoxWood()
+        {
+            FixWood("arl_01MeadowsAdv.prefab");
+            FixWood("arl_02MeadowsTreasure.prefab");
+            FixWood("arl_03MeadowsArmory.prefab");
+            FixWood("arl_11BlackForestBasic.prefab");
+
+            FixWood("arl_12BlackForestAdv.prefab");
+            FixWood("arl_13BlackForestTreasure.prefab");
+            FixWood("arl_14BlackForestArmory.prefab");
+            FixWood("arl_21SwampBasic.prefab");
+            FixWood("arl_22SwampAdv.prefab");
+            FixWood("arl_23SwampArmory.prefab");
+
+
+            FixWood("arl_31MountainsBasic.prefab");
+            FixWood("arl_32MountainsArmory.prefab");
+            FixWood("arl_41PlainsBasic.prefab");
+            FixWood("arl_42PlainsAdv.prefab");
+            FixWood("arl_43PlainsTreasure.prefab");
+            FixWood("arl_44PlainsArmory.prefab");
+        }
+
+        private static void FixWood(string name, string thebad = "wood_0", string replaceWith = "Wood")
+        {
+            return;
+            var prefabRoot = zNet.GetPrefab(name);
+
+            var treasureNode = prefabRoot.transform.Find("Treasure");
+            if (treasureNode == null) return;
+
+            var gameObject = treasureNode.gameObject;
+            var containers = gameObject.GetComponentsInChildren<Container>();
+            if (!containers.Any()) return;
+
+            GameObject properWood = zNet.GetPrefab("Wood");
+            if(properWood == null) return;
+            var newDropList = new List<ItemDrop.ItemData>();
+            var woodDrop = new ItemDrop.ItemData();
+            woodDrop.m_dropPrefab = properWood;
+            
+            newDropList.Add(woodDrop);
+
+            DropTable.DropData dropdata = new DropTable.DropData();
+            dropdata.m_item = properWood;
+            dropdata.m_stackMin = 8;
+            dropdata.m_stackMax = 10;
+            dropdata.m_weight = 1;
+
+            foreach (var box in containers)
+            {
+                var gotEmptyWood = box.m_defaultItems.m_drops.Where(aDrop => aDrop.m_item == null);
+                if(gotEmptyWood.Any())
+                {
+                    foreach(var badWood in gotEmptyWood)
+                    {
+                        box.m_defaultItems.m_drops.Remove(badWood);
+
+                        box.m_defaultItems.AddItemToList(newDropList, dropdata);
+                    }
+                }
+                var gotWood = box.m_defaultItems.m_drops.Where(aDrop => aDrop.m_item.name.ToLower() == "wood_0");
+                if (gotWood.Any())
+                {
+                    foreach (var badWood in gotWood)
+                    {
+                        box.m_defaultItems.m_drops.Remove(badWood);
+
+                        box.m_defaultItems.AddItemToList(newDropList, dropdata);
+                    }
+                }
+            }
+        }
+
+        public static void disableRecipes()
+        {
+            //BuildPiece aPiece = 
         }
     }
     
