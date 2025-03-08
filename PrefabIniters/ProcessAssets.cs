@@ -205,7 +205,7 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Edge,
                 Count = 15,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)35, (float)100),
+                SpawnAltitude = new Range((float)20, (float)100),
                 SpawnDistance = new Range(3000, 5500),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_foresthold",
@@ -221,7 +221,7 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 10,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)38, (float)100),
+                SpawnAltitude = new Range((float)20, (float)100),
                 SpawnDistance = new Range(2500, 4500),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_foresthold",
@@ -237,7 +237,7 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 10,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)38, (float)100),
+                SpawnAltitude = new Range((float)20, (float)100),
                 SpawnDistance = new Range(2000, 4000),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_foresthold",
@@ -269,7 +269,7 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Edge,
                 Count = 10,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)35, (float)100),
+                SpawnAltitude = new Range((float)15, (float)100),
                 SpawnDistance = new Range(3500, 5000),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_instairtower",
@@ -285,7 +285,7 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Edge,
                 Count = 15,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)35, (float)100),
+                SpawnAltitude = new Range((float)15, (float)100),
                 SpawnDistance = new Range(4000, 6000),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_instairtower",
@@ -301,9 +301,9 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 10,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)35, (float)100),
+                SpawnAltitude = new Range((float)15, (float)100),
                 SpawnDistance = new Range(3500, 5000),
-                MinimumDistanceFromGroup = 400,
+                MinimumDistanceFromGroup = 300,
                 GroupName = "arl_instairtower",
                 HeightDelta = new Range(0, 3),
                 Rotation = Rotation.Random
@@ -317,7 +317,7 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 15,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)40, (float)100),
+                SpawnAltitude = new Range((float)15, (float)100),
                 SpawnDistance = new Range(2000, 7500),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_instairtower",
@@ -333,9 +333,9 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 15,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)35, (float)100),
+                SpawnAltitude = new Range((float)15, (float)100),
                 SpawnDistance = new Range(4000, 6000),
-                MinimumDistanceFromGroup = 400,
+                MinimumDistanceFromGroup = 300,
                 GroupName = "arl_instairtower",
                 HeightDelta = new Range(0, 3),
                 Rotation = Rotation.Random
@@ -349,9 +349,9 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 15,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)35, (float)100),
+                SpawnAltitude = new Range((float)15, (float)100),
                 SpawnDistance = new Range(2500, 5000),
-                MinimumDistanceFromGroup = 400,
+                MinimumDistanceFromGroup = 300,
                 GroupName = "arl_instairtower",
                 HeightDelta = new Range(0, 3),
                 Rotation = Rotation.Random,
@@ -366,48 +366,47 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 8,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)30, (float)60),
+                SpawnAltitude = new Range((float)20, (float)60),
                 SpawnDistance = new Range(2000, 5000),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_jarlsmanshouse",
-                HeightDelta = new Range(0, 3),
+                HeightDelta = new Range(0, 5),
                 Rotation = Rotation.Random,
-                //ForestThreshold = new Range(0, 1)
+                ForestThreshold = new Range(1, 5)
             };
 
             var arl_jarlsmanshouse_remnant = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_jarlsmanshouse_remnant.prefab");
             PrefabManager.RegisterPrefab(arl_jarlsmanshouse_remnant);
             _ = new LocationManager.Location(arl_jarlsmanshouse_remnant)
             {
-                Biome = Heightmap.Biome.Meadows,
+                Biome = Heightmap.Biome.BlackForest,
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 8,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)30, (float)60),
-                SpawnDistance = new Range(2000, 5000),
-                MinimumDistanceFromGroup = 400,
+                SpawnAltitude = new Range((float)20, (float)60),
+                SpawnDistance = new Range(2000, 7000),
+                MinimumDistanceFromGroup = 300,
                 GroupName = "arl_jarlsmanshouse",
-                HeightDelta = new Range(0, 3),
+                HeightDelta = new Range(0, 5),
                 Rotation = Rotation.Random,
-                //ForestThreshold = new Range(0, 1)
+                ForestThreshold = new Range(1, 5)
             };
 
             var arl_jarlsmanshouse_ruin = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_jarlsmanshouse_ruin.prefab");
             PrefabManager.RegisterPrefab(arl_jarlsmanshouse_ruin);
-            // UpdateSpawnerRefs(ref arl_jarlsmanshouse_ruin,"jarlsmanshouse_ruin" , SpawnDefinitions.SpawnerMap["arl_jarlsmanshouse_ruin"]);
             _ = new LocationManager.Location(arl_jarlsmanshouse_ruin)
             {
                 Biome = Heightmap.Biome.Meadows,
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 14,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)30, (float)60),
-                SpawnDistance = new Range(2000, 5000),
-                MinimumDistanceFromGroup = 400,
+                SpawnAltitude = new Range((float)20, (float)60),
+                SpawnDistance = new Range(2000, 7000),
+                MinimumDistanceFromGroup = 300,
                 GroupName = "arl_jarlsmanshouse",
-                HeightDelta = new Range(0, 3),
+                HeightDelta = new Range(0, 5),
                 Rotation = Rotation.Random,
-                //ForestThreshold = new Range(0, 1)
+                ForestThreshold = new Range(1, 5)
             };
 
             var arl_outpostcabin = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_outpostcabin.prefab");
@@ -424,7 +423,7 @@ namespace RaikoneerLocations.PrefabIniters
                 GroupName = "arl_outpostcabin",
                 HeightDelta = new Range(0, 3),
                 Rotation = Rotation.Random,
-                ForestThreshold = new Range(1, 0)
+                ForestThreshold = new Range(0, 5)
             };
 
             var arl_outpostcabin_ruin = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_outpostcabin_ruin.prefab");
@@ -439,9 +438,9 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnDistance = new Range(1000, 4500),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_outpostcabin",
-                HeightDelta = new Range(0, 3),
+                HeightDelta = new Range(0, 5),
                 Rotation = Rotation.Random,
-                ForestThreshold = new Range(1, 0)
+                ForestThreshold = new Range(0, 5)
             };
 
             var arl_outposttower = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_outposttower.prefab");
@@ -458,7 +457,7 @@ namespace RaikoneerLocations.PrefabIniters
                 GroupName = "arl_outposttower",
                 HeightDelta = new Range(0, 3),
                 Rotation = Rotation.Random,
-                //ForestThreshold = new Range(1, 0)
+                //ForestThreshold = new Range(0, 1)
             };
 
             var arl_outposttower_burnt = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_outposttower_burnt.prefab");
@@ -475,7 +474,7 @@ namespace RaikoneerLocations.PrefabIniters
                 GroupName = "arl_outposttower",
                 HeightDelta = new Range(0, 3),
                 Rotation = Rotation.Random,
-                //ForestThreshold = new Range(1, 0)
+                //ForestThreshold = new Range(0, 1)
             };
 
             var arl_outposttower_ruin = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_outposttower_ruin.prefab");
@@ -492,7 +491,7 @@ namespace RaikoneerLocations.PrefabIniters
                 GroupName = "arl_outposttower",
                 HeightDelta = new Range(0, 3),
                 Rotation = Rotation.Random,
-                //ForestThreshold = new Range(1, 0)
+                //ForestThreshold = new Range(0, 1)
             };
 
             var arl_outposttower_remnant = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_outposttower_remnant.prefab");
@@ -503,13 +502,13 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 10,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)40, (float)100),
+                SpawnAltitude = new Range((float)30, (float)100),
                 SpawnDistance = new Range(500, 5500),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_outposttower",
                 HeightDelta = new Range(0, 3),
                 Rotation = Rotation.Random,
-                //ForestThreshold = new Range(1, 0)
+                //ForestThreshold = new Range(0, 1)
             };
 
             var arl_pillartower = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_pillartower.prefab");
@@ -520,13 +519,13 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Edge,
                 Count = 10,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)40, (float)100),
+                SpawnAltitude = new Range((float)20, (float)100),
                 SpawnDistance = new Range(500, 5500),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_pillartower",
                 HeightDelta = new Range(0, 3),
                 Rotation = Rotation.Random,
-                //ForestThreshold = new Range(1, 0)
+                //ForestThreshold = new Range(0, 1)
             };
 
             var arl_pillartower_remnant = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_pillartower_remnant.prefab");
@@ -537,13 +536,13 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 15,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)40, (float)100),
+                SpawnAltitude = new Range((float)20, (float)100),
                 SpawnDistance = new Range(500, 5500),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_pillartower",
                 HeightDelta = new Range(0, 3),
                 Rotation = Rotation.Random,
-                //ForestThreshold = new Range(1, 0)
+                //ForestThreshold = new Range(0, 1)
             };
 
             var arl_pillartower_ruin = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_pillartower_ruin.prefab");
@@ -554,13 +553,13 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 10,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)30, (float)100),
+                SpawnAltitude = new Range((float)2, (float)100),
                 SpawnDistance = new Range(500, 7500),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_pillartower",
                 HeightDelta = new Range(0, 3),
                 Rotation = Rotation.Random,
-                //ForestThreshold = new Range(1, 0)
+                //ForestThreshold = new Range(0, 1)
             };
 
             var arl_smallonghouse = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_smallonghouse.prefab");
@@ -571,13 +570,13 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 15,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)30, (float)100),
+                SpawnAltitude = new Range((float)5, (float)100),
                 SpawnDistance = new Range(400, 2500),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_smallonghouse",
                 HeightDelta = new Range(0, 3),
                 Rotation = Rotation.Random,
-                //ForestThreshold = new Range(1, 0)
+                //ForestThreshold = new Range(0, 1)
             };
 
             var arl_swamptower = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_swamptower.prefab");
@@ -588,13 +587,13 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 10,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)30, (float)100),
+                SpawnAltitude = new Range((float)2, (float)100),
                 SpawnDistance = new Range(0, 7500),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_swamptower",
                 HeightDelta = new Range(0, 3),
                 Rotation = Rotation.Random,
-                //ForestThreshold = new Range(1, 0)
+                //ForestThreshold = new Range(0, 1)
             };
 
             var arl_swamptower_remnant = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_swamptower_remnant.prefab");
@@ -605,13 +604,13 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 15,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)30, (float)100),
+                SpawnAltitude = new Range((float)2, (float)100),
                 SpawnDistance = new Range(0, 7500),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_swamptower",
                 HeightDelta = new Range(0, 3),
                 Rotation = Rotation.Random,
-                //ForestThreshold = new Range(1, 0)
+                //ForestThreshold = new Range(0, 1)
             };
 
             var arl_swamptower_ruin = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_swamptower_ruin.prefab");
@@ -622,13 +621,13 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 15,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)30, (float)100),
+                SpawnAltitude = new Range((float)2, (float)100),
                 SpawnDistance = new Range(0, 7500),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_swamptower",
                 HeightDelta = new Range(0, 3),
                 Rotation = Rotation.Random,
-                //ForestThreshold = new Range(1, 0)
+                //ForestThreshold = new Range(0, 1)
             };
 
             var arl_traphouseplain = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_traphouseplain.prefab");
@@ -639,13 +638,13 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 8,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)40, (float)100),
+                SpawnAltitude = new Range((float)15, (float)100),
                 SpawnDistance = new Range(0, 7500),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_traphouseplain",
                 HeightDelta = new Range(0, 3),
                 Rotation = Rotation.Random,
-                //ForestThreshold = new Range(1, 0)
+                //ForestThreshold = new Range(0, 1)
             };
 
             var arl_traphouseplain_remnant = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_traphouseplain_remnant.prefab");
@@ -656,13 +655,13 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 8,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)40, (float)100),
+                SpawnAltitude = new Range((float)15, (float)100),
                 SpawnDistance = new Range(2000, 7500),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_traphouseplain",
                 HeightDelta = new Range(0, 3),
                 Rotation = Rotation.Random,
-                //ForestThreshold = new Range(1, 0)
+                //ForestThreshold = new Range(0, 1)
             };
 
             var arl_traphouseplain_ruin = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_traphouseplain_ruin.prefab");
@@ -673,13 +672,13 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 8,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)40, (float)100),
+                SpawnAltitude = new Range((float)15, (float)100),
                 SpawnDistance = new Range(0, 7500),
                 MinimumDistanceFromGroup = 400,
                 GroupName = "arl_traphouseplain",
                 HeightDelta = new Range(0, 3),
                 Rotation = Rotation.Random,
-                //ForestThreshold = new Range(1, 0)
+                //ForestThreshold = new Range(0, 1)
             };
 
             var arl_twotwohouse = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_twotwohouse.prefab");
@@ -692,11 +691,11 @@ namespace RaikoneerLocations.PrefabIniters
                 Prioritize = false,
                 SpawnAltitude = new Range((float)50, (float)100),
                 SpawnDistance = new Range(1000, 3500),
-                MinimumDistanceFromGroup = 400,
+                MinimumDistanceFromGroup = 200,
                 GroupName = "arl_twotwohouse",
-                HeightDelta = new Range(0, 3),
+                HeightDelta = new Range(0, 5),
                 Rotation = Rotation.Random,
-                //ForestThreshold = new Range(1, 0)
+                ForestThreshold = new Range(0, 1)
             };
 
             var arl_twotwohouse_remnant = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_twotwohouse_remnant.prefab");
@@ -707,13 +706,13 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 20,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)35, (float)100),
+                SpawnAltitude = new Range((float)15, (float)100),
                 SpawnDistance = new Range(1000, 3500),
-                MinimumDistanceFromGroup = 400,
+                MinimumDistanceFromGroup = 300,
                 GroupName = "arl_twotwohouse",
-                HeightDelta = new Range(0, 3),
+                HeightDelta = new Range(0, 4),
                 Rotation = Rotation.Random,
-                ForestThreshold = new Range(1, 0)
+                ForestThreshold = new Range(0, 3)
             };
 
             var arl_twotwohouse_ruin = RaikoneerLocations.EmbeddedResourceBundle.LoadAsset<GameObject>("assets/arl_twotwohouse_ruin.prefab");
@@ -724,7 +723,7 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Everything,
                 Count = 20,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)35, (float)100),
+                SpawnAltitude = new Range((float)20, (float)100),
                 SpawnDistance = new Range(1000, 3500),
                 MinimumDistanceFromGroup = 300,
                 GroupName = "arl_twotwohouse_ruins",
@@ -741,13 +740,13 @@ namespace RaikoneerLocations.PrefabIniters
                 SpawnArea = Heightmap.BiomeArea.Edge,
                 Count = 10,
                 Prioritize = false,
-                SpawnAltitude = new Range((float)40, (float)100),
-                SpawnDistance = new Range(1000, 3500),
-                MinimumDistanceFromGroup = 400,
+                SpawnAltitude = new Range((float)20, (float)100),
+                SpawnDistance = new Range(1000, 4000),
+                MinimumDistanceFromGroup = 200,
                 GroupName = "arl_twotwohouse",
                 HeightDelta = new Range(0, 5),
                 Rotation = Rotation.Random,
-                ForestThreshold = new Range(1, 0)
+                ForestThreshold = new Range(0, 2)
             };
 
             RaikoneerLocations.PluginLogger.LogMessage("ARL ran location loaders.");
