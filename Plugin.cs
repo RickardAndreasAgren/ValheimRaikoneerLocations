@@ -10,26 +10,27 @@ using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
-using ItemManager;
-using RaikoneerLocations.PrefabIniters;
-using RaikoneerLocations.Spawners;
+using Raikoneer.Locations.PrefabIniters;
+using Raikoneer.Locations.Spawners;
 using ServerSyncStandalone::ServerSync;
 using UnityEngine;
 // using static RaikoneerLocations.PluginConfig;
 using Paths = BepInEx.Paths;
 
-namespace RaikoneerLocations
+namespace Raikoneer.Locations
 {
     [BepInPlugin(ModGUID, ModName, ModVersion)]
+    [BepInDependency(DependencyModGUID, BepInDependency.DependencyFlags.HardDependency)]
     public class RaikoneerLocations : BaseUnityPlugin
     {
         internal const string ModName = "RaikoneerLocations";
         internal const string ModNameGUID = "raikoneerlocations";
-        internal const string ModVersion = "0.0.3";
+        internal const string ModVersion = "0.0.8";
         internal const string Author = "Rickie26k";
         internal const string AuthorGUID = "rickie26k";
         private const string ModGUID = AuthorGUID + ".valheim." + ModNameGUID;
 
+        private const string DependencyModGUID = "rickie26k.valheim.raikoneerlocalizations";
         internal static string ConnectionError = "RL: Failed to connect during application of plugin patches";
         public static string ConfigFileName = ModName + ".cfg";
         public static string ConfigFileFullPath = Paths.ConfigPath + Path.DirectorySeparatorChar + ConfigFileName;
@@ -44,19 +45,20 @@ namespace RaikoneerLocations
 
         private static ConfigEntry<Toggle> _serverConfigLocked = null!;
 
-        public static ConfigFile? PluginConfig;
+        public static ConfigFile? PluginConfigfile;
 
         private static Assembly? _pluginAssembly { get; set; } = null;
         public static AssetBundle? EmbeddedResourceBundle { get; set; } = null;
         public void Awake()
         {
             Config.Reload();
-            PluginConfig = Config;
+            PluginConfigfile = Config;
 
             (_, _serverConfigLocked) = new ConfigData<Toggle>("1 - General", "Lock Configuration", true)
                 .Describe("If on, the configuration is locked and can be changed by server admins only.")
                 .Bind(Config, Toggle.On);
             _ = Sync.AddLockingConfigEntry(_serverConfigLocked);
+            PluginConfig.BindConfig(PluginConfigfile);
 
             _pluginAssembly = Assembly.GetExecutingAssembly();
             HarmonyInstance = Harmony.CreateAndPatchAll(_pluginAssembly, harmonyInstanceId: ModGUID);

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RaikoneerLocations
+namespace Raikoneer.Locations
 {
     internal static class PrefabInventory
     {

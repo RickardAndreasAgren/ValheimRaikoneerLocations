@@ -130,6 +130,9 @@
     <Reference Include="CreatureManager">
       <HintPath>Libs\CreatureManager.dll</HintPath>
     </Reference>
+    <Reference Include="YamlDotNet">
+      <HintPath>Libs\YamlDotNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="assets\assetsraikoneerlocations" />
@@ -148,19 +151,22 @@
     <Content Include="environment.props" />
     <Content Include="ILRepack.targets" />
     <Content Include="Libs\LocationManager.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Libs\ItemManager.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Libs\PieceManager.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Libs\CreatureManager.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Libs\ServerSync.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Libs\YamlDotNet.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="LICENSE.md" />
     <Content Include="README.md" />
@@ -175,7 +181,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" />
-    <PackageReference Include="YamlDotNet" Version="13.1.0" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

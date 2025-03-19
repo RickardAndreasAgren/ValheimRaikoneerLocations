@@ -3,7 +3,7 @@
 using BepInEx.Configuration;
 using ServerSyncStandalone::ServerSync;
 
-namespace RaikoneerLocations
+namespace Raikoneer.Locations
 {
     public class ConfigData<T>
     {

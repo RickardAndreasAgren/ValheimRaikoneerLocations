@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Security.Cryptography;
-using System.Text;
 using HarmonyLib;
+using Raikoneer.Locations;
 
-namespace RaikoneerLocations
+namespace RaikoneerVersions.Locations
 {
     [HarmonyPatch(typeof(ZNet), nameof(ZNet.OnNewConnection))]
     public static class RegisterAndCheckVersion
@@ -14,15 +11,16 @@ namespace RaikoneerLocations
         private static void Prefix(ZNetPeer peer, ref ZNet __instance)
         {
             // Register version check call
-            RaikoneerLocations.PluginLogger.LogDebug("Registering version RPC handler");
-            peer.m_rpc.Register($"{RaikoneerLocations.ModName}_VersionCheck",
+
+            Raikoneer.Locations.RaikoneerLocations.PluginLogger.LogDebug("Registering version RPC handler");
+            peer.m_rpc.Register($"{Raikoneer.Locations.RaikoneerLocations.ModName}_VersionCheck",
                 new Action<ZRpc, ZPackage>(RpcHandlers.RaikoneerLocationsRPC));
 
             // Make calls to check versions
-            RaikoneerLocations.PluginLogger.LogDebug("Invoking version check");
+            Raikoneer.Locations.RaikoneerLocations.PluginLogger.LogDebug("Invoking version check");
             ZPackage zpackage = new();
-            zpackage.Write(RaikoneerLocations.ModVersion);
-            peer.m_rpc.Invoke($"{RaikoneerLocations.ModName}_VersionCheck", zpackage);
+            zpackage.Write(Raikoneer.Locations.RaikoneerLocations.ModVersion);
+            peer.m_rpc.Invoke($"{Raikoneer.Locations.RaikoneerLocations.ModName}_VersionCheck", zpackage);
         }
     }
 
@@ -33,7 +31,7 @@ namespace RaikoneerLocations
         {
             if (!__instance.IsServer() || RpcHandlers.ValidatedPeers.Contains(rpc)) return true;
             // Disconnect peer if they didn't send mod version at all
-            RaikoneerLocations.PluginLogger.LogWarning(
+            Raikoneer.Locations.RaikoneerLocations.PluginLogger.LogWarning(
                 $"Peer ({rpc.m_socket.GetHostName()}) never sent version or couldn't due to previous disconnect, disconnecting");
             rpc.Invoke("Error", 3);
             return false; // Prevent calling undeRaikoneerLocationsying method
@@ -55,7 +53,7 @@ namespace RaikoneerLocations
             {
                 __instance.m_connectionFailedError.fontSizeMax = 25;
                 __instance.m_connectionFailedError.fontSizeMin = 15;
-                __instance.m_connectionFailedError.text += "\n" + RaikoneerLocations.ConnectionError;
+                __instance.m_connectionFailedError.text += "\n" + Raikoneer.Locations.RaikoneerLocations.ConnectionError;
             }
         }
     }
@@ -67,7 +65,7 @@ namespace RaikoneerLocations
         {
             if (!__instance.IsServer()) return;
             // Remove peer from validated list
-            RaikoneerLocations.PluginLogger.LogInfo(
+            Raikoneer.Locations.RaikoneerLocations.PluginLogger.LogInfo(
                 $"Peer ({peer.m_rpc.m_socket.GetHostName()}) disconnected, removing from validated list");
             _ = RpcHandlers.ValidatedPeers.Remove(peer.m_rpc);
         }
@@ -80,15 +78,15 @@ namespace RaikoneerLocations
         public static void RaikoneerLocationsRPC(ZRpc rpc, ZPackage pkg)
         {
             string? version = pkg.ReadString();
-            RaikoneerLocations.PluginLogger.LogInfo("Version check, local: " +
-                                                                                      RaikoneerLocations.ModVersion +
+            Raikoneer.Locations.RaikoneerLocations.PluginLogger.LogInfo("Version check, local: " +
+                                                                                      Raikoneer.Locations.RaikoneerLocations.ModVersion +
                                                                                       ",  remote: " + version);
-            if (version != RaikoneerLocations.ModVersion)
+            if (version != Raikoneer.Locations.RaikoneerLocations.ModVersion)
             {
-                RaikoneerLocations.ConnectionError = $"{RaikoneerLocations.ModName} Installed: {RaikoneerLocations.ModVersion}\n Needed: {version}";
+                Raikoneer.Locations.RaikoneerLocations.ConnectionError = $"{Raikoneer.Locations.RaikoneerLocations.ModName} Installed: {Raikoneer.Locations.RaikoneerLocations.ModVersion}\n Needed: {version}";
                 if (!ZNet.instance.IsServer()) return;
                 // Different versions - force disconnect client from server
-                RaikoneerLocations.PluginLogger.LogWarning($"Peer ({rpc.m_socket.GetHostName()}) has incompatible version, disconnecting...");
+                Raikoneer.Locations.RaikoneerLocations.PluginLogger.LogWarning($"Peer ({rpc.m_socket.GetHostName()}) has incompatible version, disconnecting...");
                 rpc.Invoke("Error", 3);
             }
             else
@@ -96,12 +94,12 @@ namespace RaikoneerLocations
                 if (!ZNet.instance.IsServer())
                 {
                     // Enable mod on client if versions match
-                    RaikoneerLocations.PluginLogger.LogInfo("Received same version from server!");
+                    Raikoneer.Locations.RaikoneerLocations.PluginLogger.LogInfo("Received same version from server!");
                 }
                 else
                 {
                     // Add client to validated list
-                    RaikoneerLocations.PluginLogger.LogInfo(
+                    Raikoneer.Locations.RaikoneerLocations.PluginLogger.LogInfo(
                         $"Adding peer ({rpc.m_socket.GetHostName()}) to validated list");
                     ValidatedPeers.Add(rpc);
                 }

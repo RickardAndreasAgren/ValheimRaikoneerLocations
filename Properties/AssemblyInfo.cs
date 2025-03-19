@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle(RaikoneerLocations.RaikoneerLocations.ModName)]
+[assembly: AssemblyTitle(Raikoneer.Locations.RaikoneerLocations.ModName)]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany(RaikoneerLocations.RaikoneerLocations.Author)]
-[assembly: AssemblyProduct(RaikoneerLocations.RaikoneerLocations.ModName)]
+[assembly: AssemblyCompany(Raikoneer.Locations.RaikoneerLocations.Author)]
+[assembly: AssemblyProduct(Raikoneer.Locations.RaikoneerLocations.ModName)]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion(RaikoneerLocations.RaikoneerLocations.ModVersion)]
-[assembly: AssemblyFileVersion(RaikoneerLocations.RaikoneerLocations.ModVersion)]
+[assembly: AssemblyVersion(Raikoneer.Locations.RaikoneerLocations.ModVersion)]
+[assembly: AssemblyFileVersion(Raikoneer.Locations.RaikoneerLocations.ModVersion)]

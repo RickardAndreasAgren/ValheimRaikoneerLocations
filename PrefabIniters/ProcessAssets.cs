@@ -6,12 +6,12 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using System.Linq;
-using RaikoneerLocations.Spawners;
+using Raikoneer.Locations.Spawners;
 using PieceManager;
 using System.ComponentModel;
 using BepInEx.Configuration;
 
-namespace RaikoneerLocations.PrefabIniters
+namespace Raikoneer.Locations.PrefabIniters
 {
     public static class ProcessAssets
     {
@@ -184,6 +184,8 @@ namespace RaikoneerLocations.PrefabIniters
         {
             piece.Name.English("Chest");
             piece.RequiredItems.Add("Wood", 10, false);
+            piece.SpecialProperties.NoConfig = true;
+            piece.RecipeIsActive = PluginConfig.LootChests;
 
             /*
             var config = piece.RecipeIsActive;
@@ -826,7 +828,7 @@ namespace RaikoneerLocations.PrefabIniters
                 RaikoneerLocations.PluginLogger.LogWarning($"Got ${(updatedCreatureRef != null ? updatedCreatureRef.name : NullLookup)}");
                 creatureSpawner.m_creaturePrefab = updatedCreatureRef;
             }
-            zNet.Update();
+            //zNet.Update();
         }
 
         public static void FixBoxWood()
