@@ -15,14 +15,12 @@ namespace Raikoneer.Locations
         public static ConfigEntry<bool>? LootChests { get; internal set; }
         public static ConfigDefinition? DefOrangeTree { get; internal set; }
         public static ConfigEntry<bool>? OrangeTree { get; internal set; }
-        public static ConfigDefinition? DefSkeletonNoArcher { get; internal set; }
-        public static ConfigEntry<bool>? SkeletonNoArcher { get; internal set; }
         public static void LootChestsNotBuildable(ConfigFile config)
         {
             (DefLootChests, LootChests) = new ConfigData<bool>("1 - Something", "Loot chest recipes not turned off", false)
             .Describe("Set to false, because they should not be buildable. \r\n" +
                 "(false): Disable building chest pieces.\r\n" +
-                "true: Enable building chest pieces.\r\n", null, "RaikoneerLocations", "Location")
+                "true: Enable building chest pieces.\r\n", new AcceptableValueList<bool>(false,true), "RaikoneerLocations", "Location")
             .Bind(config, false);
         }
 

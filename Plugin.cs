@@ -25,7 +25,7 @@ namespace Raikoneer.Locations
     {
         internal const string ModName = "RaikoneerLocations";
         internal const string ModNameGUID = "raikoneerlocations";
-        internal const string ModVersion = "0.0.8";
+        internal const string ModVersion = "0.0.9";
         internal const string Author = "Rickie26k";
         internal const string AuthorGUID = "rickie26k";
         private const string ModGUID = AuthorGUID + ".valheim." + ModNameGUID;
