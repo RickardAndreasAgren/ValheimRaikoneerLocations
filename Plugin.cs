@@ -14,7 +14,6 @@ using Raikoneer.Locations.PrefabIniters;
 using Raikoneer.Locations.Spawners;
 using ServerSyncStandalone::ServerSync;
 using UnityEngine;
-// using static RaikoneerLocations.PluginConfig;
 using Paths = BepInEx.Paths;
 
 namespace Raikoneer.Locations
@@ -25,17 +24,17 @@ namespace Raikoneer.Locations
     {
         internal const string ModName = "RaikoneerLocations";
         internal const string ModNameGUID = "raikoneerlocations";
-        internal const string ModVersion = "0.0.9";
+        internal const string ModVersion = "0.2.1";
         internal const string Author = "Rickie26k";
         internal const string AuthorGUID = "rickie26k";
         private const string ModGUID = AuthorGUID + ".valheim." + ModNameGUID;
 
         private const string DependencyModGUID = "rickie26k.valheim.raikoneerlocalizations";
         internal static string ConnectionError = "RL: Failed to connect during application of plugin patches";
-        public static string ConfigFileName = ModName + ".cfg";
+        public static string ConfigFileName = ModGUID + ".cfg";
         public static string ConfigFileFullPath = Paths.ConfigPath + Path.DirectorySeparatorChar + ConfigFileName;
         public static bool fixedReferences;
-        public static Harmony? HarmonyInstance { get; private set; } = null;
+        private Harmony? HarmonyInstance { get; set; } = null;
 
         public static readonly ManualLogSource PluginLogger =
             BepInEx.Logging.Logger.CreateLogSource(ModName);
@@ -51,7 +50,6 @@ namespace Raikoneer.Locations
         public static AssetBundle? EmbeddedResourceBundle { get; set; } = null;
         public void Awake()
         {
-            Config.Reload();
             PluginConfigfile = Config;
 
             (_, _serverConfigLocked) = new ConfigData<Toggle>("1 - General", "Lock Configuration", true)
@@ -64,18 +62,17 @@ namespace Raikoneer.Locations
             HarmonyInstance = Harmony.CreateAndPatchAll(_pluginAssembly, harmonyInstanceId: ModGUID);
             //LocalizationManager.Load();
             EmbeddedResourceBundle = LoadAssetBundle("raikoneerlocations");
-            SpawnDefinitions.BuildMapDefault();
             ProcessAssets.RunPrefabs();
             ProcessAssets.RunPieces();
             ProcessAssets.RunLocations();
 
             SetupWatcher();
+            Config.Save();
         }
 
         private void OnDestroy()
         {
             Config.Save();
-            HarmonyInstance!.UnpatchSelf();
         }
         public enum Toggle
         {
@@ -133,12 +130,12 @@ namespace Raikoneer.Locations
         }
 
         [HarmonyPatch(typeof(ZNetScene), "Awake")]
+        [HarmonyPriority(90)]
         public static class ZNetScene_Awake_Patch_LocationSpawners
         {
             public static void Postfix(ZNetScene __instance)
             {
                 ProcessAssets.UpdateLocationSpawners(__instance);
-                ProcessAssets.FixBoxWood();
             }
         }
     }

@@ -7,8 +7,6 @@ namespace Raikoneer.Locations.Spawners
 {
     public static class SpawnDefinitions
     {
-        public static Dictionary<string, Dictionary<string, string>> SpawnerMap = new();
-
         public static void BuildMapDefault()
         {
             Foresthold();
@@ -57,387 +55,417 @@ namespace Raikoneer.Locations.Spawners
 
         private static void TwoTwoHouse_Stormed()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.GreydwarfElite);
-            slist.Add("spawn2", PrefabInventoryMonsters.Greydwarf);
-            slist.Add("spawn3", PrefabInventoryMonsters.GreydwarfSpawner);
-            slist.Add("spawn4", PrefabInventoryMonsters.GreydwarfElite);
-            slist.Add("spawn5", PrefabInventoryMonsters.GreydwarfShaman);
+            string locationName = "arl_twotwohouse_stormed";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.GreydwarfElite, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Greydwarf, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.GreydwarfSpawner, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.GreydwarfElite, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.GreydwarfShaman, locationName, "spawn5"));
 
-            SpawnerMap["arl_twotwohouse_stormed"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void TwoTwoHouse_Ruin()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.SkeletonMelee);
-            slist.Add("spawn2", PrefabInventoryMonsters.Skeleton);
-
-            SpawnerMap["arl_twotwohouse_ruin"] = slist;
+            string locationName = "arl_twotwohouse_ruin";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.SkeletonMelee, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn2"));
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void TwoTwoHouse_Remnant()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Greyling);
-            slist.Add("spawn2", PrefabInventoryMonsters.Neck);
+            string locationName = "arl_twotwohouse_remnant";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Greyling, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Neck, locationName, "spawn2"));
 
-            SpawnerMap["arl_twotwohouse_remnant"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void TwoTwoHouse()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Cultist);
-            slist.Add("spawn2", PrefabInventoryMonsters.Ulv);
-            slist.Add("spawn3", PrefabInventoryMonsters.Ulv);
+            string locationName = "arl_twotwohouse";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Cultist, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Ulv, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.Ulv, locationName, "spawn3"));
 
-            SpawnerMap["arl_twotwohouse"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Traphouseplain_Ruin()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.GoblinBrute);
-            slist.Add("spawn2", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn3", PrefabInventoryMonsters.GoblinSpearman);
-            slist.Add("spawn4", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn5", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn6", PrefabInventoryMonsters.Goblin);
+            string locationName = "arl_traphouseplain_ruin";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.GoblinBrute, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Goblin, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.GoblinSpearman, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.Goblin, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.Goblin, locationName, "spawn5"));
+            slist.Add("spawn6", new(PrefabInventoryMonsters.Goblin, locationName, "spawn6"));
 
-            SpawnerMap["arl_traphouseplain_ruin"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Traphouseplain_Remnant()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Boar);
-            slist.Add("spawn2", PrefabInventoryMonsters.Neck);
-            slist.Add("spawn3", PrefabInventoryMonsters.Boar);
-            slist.Add("spawn4", PrefabInventoryMonsters.Neck);
-            slist.Add("spawn5", PrefabInventoryMonsters.Boar);
-            slist.Add("spawn6", PrefabInventoryMonsters.Boar);
+            string locationName = "arl_traphouseplain_remnant";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Boar, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Neck, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.Boar, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.Neck, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.Boar, locationName, "spawn5"));
+            slist.Add("spawn6", new(PrefabInventoryMonsters.Boar, locationName, "spawn6"));
 
-            SpawnerMap["arl_traphouseplain_remnant"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Traphouseplain()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Wraith);
-            slist.Add("spawn2", PrefabInventoryMonsters.Wraith);
-            slist.Add("spawn3", PrefabInventoryMonsters.BlobTar);
-            slist.Add("spawn4", PrefabInventoryMonsters.DraugrElite);
-            slist.Add("spawn5", PrefabInventoryMonsters.DraugrElite);
-            slist.Add("spawn6", PrefabInventoryMonsters.Wraith);
+            string locationName = "arl_traphouseplain";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Wraith, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Wraith, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.BlobTar, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.DraugrElite, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.DraugrElite, locationName, "spawn5"));
+            slist.Add("spawn6", new(PrefabInventoryMonsters.Wraith, locationName, "spawn6"));
 
-            SpawnerMap["arl_traphouseplain"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Swamptower_Ruin()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn2", PrefabInventoryMonsters.Draugr);
-            slist.Add("spawn3", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn4", PrefabInventoryMonsters.Draugr);
-            slist.Add("spawn5", PrefabInventoryMonsters.Draugr);
+            string locationName = "arl_swamptower_ruin";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Draugr, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.Draugr, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.Draugr, locationName, "spawn5"));
 
-            SpawnerMap["arl_swamptower_ruin"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Swamptower_Remnant()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Wraith);
+            string locationName = "arl_swamptower_remnant";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Wraith, locationName, "spawn1"));
 
-            SpawnerMap["arl_swamptower_remnant"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Swamptower()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Wraith);
+            string locationName = "arl_swamptower";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Wraith, locationName, "spawn1"));
 
-            SpawnerMap["arl_swamptower"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Smallonghouse()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.SkeletonMelee);
-            slist.Add("spawn2", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn3", PrefabInventoryMonsters.Skeleton);
+            string locationName = "arl_smallonghouse";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.SkeletonMelee, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn3"));
 
-            SpawnerMap["arl_smallonghouse"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Pillartower_Ruin()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn2", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn3", PrefabInventoryMonsters.DraugrElite);
+            string locationName = "arl_pillartower_ruin";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.DraugrElite, locationName, "spawn3"));
 
-            SpawnerMap["arl_pillartower_ruin"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Pillartower_Remnant()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Deathsquito);
+            string locationName = "arl_pillartower_remnant";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Deathsquito, locationName, "spawn1"));
 
-            SpawnerMap["arl_pillartower_remnant"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Pillartower()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.GoblinSpearman);
-            slist.Add("spawn2", PrefabInventoryMonsters.GoblinSpearman);
-            slist.Add("spawn3", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn4", PrefabInventoryMonsters.GoblinShaman);
-            slist.Add("spawn5", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn6", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn7", PrefabInventoryMonsters.Goblin);
+            string locationName = "arl_pillartower";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.GoblinSpearman, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.GoblinSpearman, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.Goblin, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.GoblinShaman, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.Goblin, locationName, "spawn5"));
+            slist.Add("spawn6", new(PrefabInventoryMonsters.Goblin, locationName, "spawn6"));
+            slist.Add("spawn7", new(PrefabInventoryMonsters.Goblin, locationName, "spawn7"));
 
-            SpawnerMap["arl_pillartower"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Outposttower_Ruin()
         {
+            string locationName = "arl_outposttower_ruin";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Goblin, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.GoblinSpearman, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.Goblin, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.GoblinSpearman, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.Goblin, locationName, "spawn5"));
 
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn2", PrefabInventoryMonsters.GoblinSpearman);
-            slist.Add("spawn3", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn4", PrefabInventoryMonsters.GoblinSpearman);
-            slist.Add("spawn5", PrefabInventoryMonsters.Goblin);
-
-            SpawnerMap["arl_outposttower_ruin"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Outposttower_Remnant()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn2", PrefabInventoryMonsters.GoblinSpearman);
-            slist.Add("spawn3", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn4", PrefabInventoryMonsters.GoblinSpearman);
-            slist.Add("spawn5", PrefabInventoryMonsters.Goblin);
+            string locationName = "arl_outposttower_remnant";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Goblin, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.GoblinSpearman, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.Goblin, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.GoblinSpearman, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.Goblin, locationName, "spawn5"));
 
-            SpawnerMap["arl_outposttower_remnant"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Outposttower_Burnt()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn2", PrefabInventoryMonsters.GoblinSpearman);
-            slist.Add("spawn3", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn4", PrefabInventoryMonsters.GoblinSpearman);
-            slist.Add("spawn5", PrefabInventoryMonsters.Goblin);
+            string locationName = "arl_outposttower_burnt";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Goblin, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.GoblinSpearman, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.Goblin, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.GoblinSpearman, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.Goblin, locationName, "spawn5"));
 
-            SpawnerMap["arl_outposttower_burnt"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Outposttower()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Draugr);
-            slist.Add("spawn2", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn3", PrefabInventoryMonsters.Ghost);
-            slist.Add("spawn4", PrefabInventoryMonsters.SkeletonMelee);
-            slist.Add("spawn5", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn6", PrefabInventoryMonsters.SkeletonMelee);
+            string locationName = "arl_outposttower";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Draugr, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.Ghost, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.SkeletonMelee, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn5"));
+            slist.Add("spawn6", new(PrefabInventoryMonsters.SkeletonMelee, locationName, "spawn6"));
 
-            SpawnerMap["arl_outposttower"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Outpostcabin_ruin()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Drake);
-            slist.Add("spawn2", PrefabInventoryMonsters.Drake);
+            string locationName = "arl_outpostcabin_ruin";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Drake, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Drake, locationName, "spawn2"));
 
-            SpawnerMap["arl_outpostcabin_ruin"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Outpostcabin()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Wolf);
-            slist.Add("spawn2", PrefabInventoryMonsters.Wolf);
-            slist.Add("spawn3", PrefabInventoryMonsters.Wolf);
+            string locationName = "arl_outpostcabin";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Wolf, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Wolf, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.Wolf, locationName, "spawn3"));
 
-            SpawnerMap["arl_outpostcabin"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Jarlsmanshouse_Ruin()
         {
-            return;
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn2", PrefabInventoryMonsters.Draugr);
-            slist.Add("spawn3", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn4", PrefabInventoryMonsters.Ghost);
-            slist.Add("spawn5", PrefabInventoryMonsters.SkeletonMelee);
-            slist.Add("spawn6", PrefabInventoryMonsters.Skeleton);
+            string locationName = "arl_jarlsmanshouse_ruin";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Draugr, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.Ghost, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.SkeletonMelee, locationName, "spawn5"));
+            slist.Add("spawn6", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn6"));
 
-            SpawnerMap["arl_jarlsmanshouse_ruin"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Jarlsmanshouse_Remnant()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn2", PrefabInventoryMonsters.Draugr);
-            slist.Add("spawn3", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn4", PrefabInventoryMonsters.Ghost);
-            slist.Add("spawn5", PrefabInventoryMonsters.SkeletonMelee);
-            slist.Add("spawn6", PrefabInventoryMonsters.Skeleton);
+            string locationName = "arl_jarlsmanshouse_remnant";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Draugr, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.Ghost, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.SkeletonMelee, locationName, "spawn5"));
+            slist.Add("spawn6", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn6"));
 
-            SpawnerMap["arl_jarlsmanshouse_remnant"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Jarlsmanshouse()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Wraith);
-            slist.Add("spawn2", PrefabInventoryMonsters.SkeletonMelee);
-            slist.Add("spawn3", PrefabInventoryMonsters.SkeletonMelee);
+            string locationName = "arl_jarlsmanshouse";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Wraith, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.SkeletonMelee, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.SkeletonMelee, locationName, "spawn3"));
 
-            SpawnerMap["arl_jarlsmanshouse"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Instairtower_Ruin()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Greydwarf);
-            slist.Add("spawn2", PrefabInventoryMonsters.Greydwarf);
-            slist.Add("spawn3", PrefabInventoryMonsters.GreydwarfShaman);
-            slist.Add("spawn4", PrefabInventoryMonsters.Greydwarf);
-            slist.Add("spawn5", PrefabInventoryMonsters.Greydwarf);
-            slist.Add("spawn6", PrefabInventoryMonsters.Greydwarf);
+            string locationName = "arl_instairtower_ruin";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Greydwarf, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Greydwarf, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.GreydwarfShaman, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.Greydwarf, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.Greydwarf, locationName, "spawn5"));
+            slist.Add("spawn6", new(PrefabInventoryMonsters.Greydwarf, locationName, "spawn6"));
 
-            SpawnerMap["arl_instairtower_ruin"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Instairtower_Reruin()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.GoblinSpearman);
-            slist.Add("spawn2", PrefabInventoryMonsters.GoblinSpearman);
-            slist.Add("spawn3", PrefabInventoryMonsters.GoblinShaman);
-            slist.Add("spawn4", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn5", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn6", PrefabInventoryMonsters.Goblin);
+            string locationName = "arl_instairtower_reruin";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.GoblinSpearman, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.GoblinSpearman, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.GoblinShaman, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.Goblin, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.Goblin, locationName, "spawn5"));
+            slist.Add("spawn6", new(PrefabInventoryMonsters.Goblin, locationName, "spawn6"));
 
-            SpawnerMap["arl_instairtower_reruin"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Instairtower_Remnant()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Draugr);
-            slist.Add("spawn2", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn3", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn4", PrefabInventoryMonsters.Skeleton);
+            string locationName = "arl_instairtower_remnant";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Draugr, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn4"));
 
-            SpawnerMap["arl_instairtower_remnant"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Instairtower_Rebuilt()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.GoblinSpearman);
-            slist.Add("spawn2", PrefabInventoryMonsters.GoblinSpearman);
-            slist.Add("spawn3", PrefabInventoryMonsters.GoblinShaman);
-            slist.Add("spawn4", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn5", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn6", PrefabInventoryMonsters.Goblin);
+            string locationName = "arl_instairtower_rebuilt";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.GoblinSpearman, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.GoblinSpearman, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.GoblinShaman, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.Goblin, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.Goblin, locationName, "spawn5"));
+            slist.Add("spawn6", new(PrefabInventoryMonsters.Goblin, locationName, "spawn6"));
 
-            SpawnerMap["arl_instairtower_rebuilt"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Instairtower_Damaged()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.GoblinSpearman);
-            slist.Add("spawn2", PrefabInventoryMonsters.GoblinSpearman);
-            slist.Add("spawn3", PrefabInventoryMonsters.GoblinShaman);
-            slist.Add("spawn4", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn5", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn6", PrefabInventoryMonsters.Goblin);
+            string locationName = "arl_instairtower_damaged";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.GoblinSpearman, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.GoblinSpearman, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.GoblinShaman, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.Goblin, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.Goblin, locationName, "spawn5"));
+            slist.Add("spawn6", new(PrefabInventoryMonsters.Goblin, locationName, "spawn6"));
 
-            SpawnerMap["arl_instairtower_damaged"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Instairtower()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.GoblinSpearman);
-            slist.Add("spawn2", PrefabInventoryMonsters.GoblinSpearman);
-            slist.Add("spawn3", PrefabInventoryMonsters.GoblinShaman);
-            slist.Add("spawn4", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn5", PrefabInventoryMonsters.Goblin);
-            slist.Add("spawn6", PrefabInventoryMonsters.Goblin);
+            string locationName = "arl_instairtower";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.GoblinSpearman, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.GoblinSpearman, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.GoblinShaman, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.Goblin, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.Goblin, locationName, "spawn5"));
+            slist.Add("spawn6", new(PrefabInventoryMonsters.Goblin, locationName, "spawn6"));
 
-            SpawnerMap["arl_instairtower"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Foresthold_Ruins()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn2", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn3", PrefabInventoryMonsters.SkeletonMelee);
-            slist.Add("spawn4", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn5", PrefabInventoryMonsters.SkeletonMelee);
+            string locationName = "arl_foresthold_ruins";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.SkeletonMelee, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.SkeletonMelee, locationName, "spawn5"));
 
-            SpawnerMap["arl_foresthold_ruins"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Foresthold_Remnant()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Draugr);
-            slist.Add("spawn2", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn3", PrefabInventoryMonsters.SkeletonMelee);
-            slist.Add("spawn4", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn5", PrefabInventoryMonsters.SkeletonMelee);
-            slist.Add("spawn6", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn7", PrefabInventoryMonsters.Skeleton);
+            string locationName = "arl_foresthold_remnant";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Draugr, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.SkeletonMelee, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.SkeletonMelee, locationName, "spawn5"));
+            slist.Add("spawn6", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn6"));
+            slist.Add("spawn7", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn7"));
 
-            SpawnerMap["arl_foresthold_remnant"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         private static void Foresthold_Deserted()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Draugr);
-            slist.Add("spawn2", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn3", PrefabInventoryMonsters.SkeletonMelee);
-            slist.Add("spawn4", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn5", PrefabInventoryMonsters.SkeletonMelee);
-            slist.Add("spawn6", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn7", PrefabInventoryMonsters.Skeleton);
+            string locationName = "arl_foresthold_deserted";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Draugr, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.SkeletonMelee, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.SkeletonMelee, locationName, "spawn5"));
+            slist.Add("spawn6", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn6"));
+            slist.Add("spawn7", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn7"));
 
-            SpawnerMap["arl_foresthold_deserted"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
 
         public static void Foresthold()
         {
-            var slist = new Dictionary<string, string>();
-            slist.Add("spawn1", PrefabInventoryMonsters.Draugr);
-            slist.Add("spawn2", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn3", PrefabInventoryMonsters.SkeletonMelee);
-            slist.Add("spawn4", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn5", PrefabInventoryMonsters.SkeletonMelee);
-            slist.Add("spawn6", PrefabInventoryMonsters.Skeleton);
-            slist.Add("spawn7", PrefabInventoryMonsters.Skeleton);
+            string locationName = "arl_foresthold";
+            var slist = new Dictionary<string, CreatureSpawnerNameConfig>();
+            slist.Add("spawn1", new(PrefabInventoryMonsters.Draugr, locationName, "spawn1"));
+            slist.Add("spawn2", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn2"));
+            slist.Add("spawn3", new(PrefabInventoryMonsters.SkeletonMelee, locationName, "spawn3"));
+            slist.Add("spawn4", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn4"));
+            slist.Add("spawn5", new(PrefabInventoryMonsters.SkeletonMelee, locationName, "spawn5"));
+            slist.Add("spawn6", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn6"));
+            slist.Add("spawn7", new(PrefabInventoryMonsters.Skeleton, locationName, "spawn7"));
 
-            SpawnerMap["arl_foresthold"] = slist;
+            PluginConfig.SpawnerMap[locationName] = slist;
         }
     }
 }
